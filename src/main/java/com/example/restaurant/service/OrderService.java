@@ -43,7 +43,7 @@ public class OrderService {
         boolean allHot = items.stream()
                 .allMatch(item -> item.getChillies() > 0);
 
-        boolean anyHot = totalChillies > 5;
+        boolean anyHot = totalChillies >= 5;
 
         // Apply 10% discount if all dishes are hot
         double discount = 0.0;

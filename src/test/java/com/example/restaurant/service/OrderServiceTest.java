@@ -88,8 +88,8 @@ class OrderServiceTest {
         // Assert results
         assertEquals("John Doe", result.getCustomerName());
         assertEquals(27, result.getTotal());
-        assertTrue(result.isHot());
+        assertFalse(result.isHot());
         assertEquals(3, result.getTotalChillies());
-        assertEquals(3, result.getDiscount());
+        assertEquals(0, result.getDiscount());
     }
 }

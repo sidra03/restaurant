@@ -1,26 +1,38 @@
 import React from "react";
 import "./MenuList.css";
 
-export default function MenuList({ menuItems, quantities, addToOrder, removeFromOrder }) {
+function MenuList({ menuItems, quantities, addToOrder, removeFromOrder }) {
   return (
     <div className="menu-list">
-      {menuItems.map(({ id, name, description, price, chilliLevel }) => (
-        <div key={id} className="menu-item">
-          <div className="menu-item-info">
-            <h3>{name}</h3>
-            <p className="menu-description">{description}</p>
-            <p className="menu-price">${price.toFixed(2)}</p>
-            <p className="menu-chilli">🌶️ Level: {chilliLevel}</p>
+      {menuItems.map((item) => (
+        <div key={item.id} className="menu-item">
+          <div className="item-info">
+            <h3>{item.name}</h3>
+            <p>{item.description}</p>
+            <p className="price">${item.price.toFixed(2)}</p>
           </div>
-          <div className="menu-item-controls">
-            <button onClick={() => removeFromOrder(name)} disabled={!quantities[name]}>
+          <div className="quantity-control">
+            <button
+              className="qty-btn"
+              onClick={() => removeFromOrder(item.name)}
+              aria-label={`Remove one ${item.name}`}
+              disabled={!quantities[item.name]}
+            >
               −
             </button>
-            <span>{quantities[name] || 0}</span>
-            <button onClick={() => addToOrder(name)}>+</button>
+            <span className="qty-number">{quantities[item.name] || 0}</span>
+            <button
+              className="qty-btn"
+              onClick={() => addToOrder(item.name)}
+              aria-label={`Add one ${item.name}`}
+            >
+              +
+            </button>
           </div>
         </div>
       ))}
     </div>
   );
 }
+
+export default MenuList;

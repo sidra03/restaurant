@@ -1,15 +1,226 @@
+/* General app container */
 .app-container {
   max-width: 900px;
-  margin: 0 auto;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  padding: 20px;
-  background: #f8f9fa;
-  color: #333;
+  margin: 30px auto;
+  padding: 20px 25px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+  color: #2e2e2e;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-.app-title {
-  text-align: center;
+/* Navbar */
+.navbar {
+  background-color: #2a9d8f;
+  padding: 16px 0;
+  color: #ffffff;
+  font-size: 1.75rem;
   font-weight: 700;
-  color: #2c3e50;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(42, 157, 143, 0.5);
   margin-bottom: 30px;
+  letter-spacing: 1.2px;
+}
+
+/* Menu list container */
+.menu-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+}
+
+/* Each menu item */
+.menu-item {
+  background-color: #ffffff;
+  flex: 1 1 270px;
+  min-width: 240px;
+  max-width: 320px;
+  border-radius: 18px;
+  padding: 20px 22px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #d1d1d1;
+}
+
+.menu-item:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+}
+
+.menu-item h3 {
+  margin: 0 0 12px;
+  color: #1b1b1b;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.menu-item p {
+  flex-grow: 1;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  color: #555555;
+}
+
+.menu-item .price {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  color: #2a9d8f;
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
+  background-color: #2a9d8f;
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  transition: background-color 0.25s ease, box-shadow 0.2s ease;
+  box-shadow: 0 3px 6px rgba(42, 157, 143, 0.4);
+}
+
+button:hover:not(:disabled) {
+  background-color: #23867a;
+  box-shadow: 0 5px 14px rgba(35, 134, 122, 0.6);
+}
+
+button:disabled {
+  background-color: #b0b0b0;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Quantity controls inside menu item */
+.quantity-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.quantity-controls button {
+  padding: 8px 14px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(42, 157, 143, 0.3);
+  transition: box-shadow 0.2s ease;
+}
+
+.quantity-controls button:hover:not(:disabled) {
+  box-shadow: 0 4px 10px rgba(42, 157, 143, 0.6);
+}
+
+/* Order summary styles */
+.order-summary {
+  background-color: #ffffff;
+  margin-top: 40px;
+  padding: 28px 30px;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+}
+
+.order-summary h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.75rem;
+  color: #1b1b1b;
+  letter-spacing: 0.8px;
+}
+
+.order-summary ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 22px;
+}
+
+.order-summary li {
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.15rem;
+  color: #444444;
+}
+
+.order-summary .total {
+  font-weight: 700;
+  font-size: 1.45rem;
+  color: #2a9d8f;
+  margin-top: 14px;
+}
+
+.order-summary .discount-message {
+  color: #d32f2f;
+  font-weight: 700;
+  margin-top: 14px;
+  font-style: italic;
+}
+
+/* Confirmation page */
+.confirmation {
+  text-align: center;
+  padding: 50px 30px;
+  background-color: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.confirmation h2 {
+  color: #2a9d8f;
+  margin-bottom: 24px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.confirmation p {
+  font-size: 1.2rem;
+  margin-bottom: 14px;
+  color: #444444;
+}
+
+/* Responsive: mobile devices */
+@media (max-width: 600px) {
+  .app-container {
+    padding: 15px 18px;
+  }
+
+  .menu-list {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .menu-item {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .order-summary li {
+    font-size: 1.1rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .quantity-controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .quantity-controls button {
+    width: 100%;
+  }
 }
