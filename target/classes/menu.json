@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Spicy Chicken Curry",
+    "description": "Hot and flavorful chicken curry.",
+    "price": 15.0,
+    "available": true,
+    "chilliLevel": 2
+  },
+  {
+    "name": "Vegetable Biryani",
+    "description": "Basmati rice with mixed vegetables.",
+    "price": 12.0,
+    "available": true,
+    "chilliLevel": 0
+  },
+  {
+    "name": "Hot Paneer Tikka",
+    "description": "Grilled cottage cheese with spices.",
+    "price": 14.0,
+    "available": true,
+    "chilliLevel": 3
+  }
+]
