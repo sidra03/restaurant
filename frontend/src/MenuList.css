@@ -1,0 +1,62 @@
+.menu-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.menu-item {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-item-info h3 {
+  margin: 0 0 8px;
+  color: #27ae60;
+}
+
+.menu-description {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.menu-price {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.menu-chilli {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+.menu-item-controls button {
+  font-size: 1.2rem;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #27ae60;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.menu-item-controls button:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.menu-item-controls span {
+  display: inline-block;
+  width: 24px;
+  text-align: center;
+  font-weight: 700;
+  margin: 0 8px;
+}

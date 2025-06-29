@@ -1,0 +1,51 @@
+.confirmation-container {
+  max-width: 480px;
+  margin: 50px auto;
+  padding: 30px 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  text-align: center;
+}
+
+.confirmation-container h2 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+  font-weight: 700;
+}
+
+.confirmation-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.confirmation-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+}
+
+.discount-text {
+  color: #e74c3c; /* reddish for discount */
+  font-size: 17px;
+  margin-bottom: 15px;
+}
+
+.total-text {
+  font-size: 22px;
+  font-weight: 700;
+  color: #27ae60; /* green for total */
+  margin-bottom: 25px;
+}
+
+.thank-you-message {
+  font-size: 18px;
+  font-weight: 500;
+  color: #34495e;
+}

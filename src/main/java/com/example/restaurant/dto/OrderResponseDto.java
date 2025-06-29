@@ -17,4 +17,5 @@ public class OrderResponseDto {
     private boolean hot; // if the order is hot or not
     private int totalChillies; // total chillies in order
     private double discount; // 0 if no discount else 10% discount applied
+    private String message;
 }
