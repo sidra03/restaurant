@@ -1,76 +1,65 @@
 .menu-list {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 0 10px;
+  padding: 1rem;
+}
+
+.category-section {
+  margin-bottom: 2rem;
 }
 
 .menu-item {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  background: #fff;
+}
+
+.menu-item h3 {
+  margin-top: 0;
+}
+
+.quantity-controls {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 15px 10px;
-  border-bottom: 1px solid #ddd;
-  background-color: #fafafa;
-  border-radius: 8px;
-  margin-bottom: 12px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  gap: 0.5rem;
+  margin-top: 0.5rem;
 }
 
-.item-info h3 {
-  margin: 0 0 6px 0;
+.quantity-controls button {
+  padding: 0.4rem 0.8rem;
   font-size: 1.2rem;
-  color: #333;
-}
-
-.item-info p {
-  margin: 3px 0;
-  color: #666;
-  font-size: 0.9rem;
-}
-
-.price {
-  font-weight: 600;
-  color: #2c3e50;
-}
-
-.quantity-control {
-  display: inline-flex;
-  align-items: center;
-  border: 1.5px solid #bbb;
-  border-radius: 6px;
-  overflow: hidden;
-  background-color: #fff;
-  user-select: none;
-}
-
-.qty-btn {
-  background-color: #eee;
   border: none;
-  padding: 8px 14px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #555;
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  outline: none;
 }
 
-.qty-btn:hover:not(:disabled) {
-  background-color: #d0d0d0;
-}
-
-.qty-btn:disabled {
-  color: #aaa;
+.quantity-controls button:disabled {
+  background-color: #ccc;
   cursor: not-allowed;
-  background-color: #f7f7f7;
 }
 
-.qty-number {
-  min-width: 30px;
+.quantity-controls span {
+  min-width: 80px;
   text-align: center;
-  font-weight: 600;
-  font-size: 1.1rem;
-  color: #222;
-  padding: 8px 0;
-  user-select: none;
+  font-weight: bold;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+  .menu-item {
+    padding: 0.8rem;
+  }
+
+  .quantity-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .quantity-controls span {
+    min-width: unset;
+  }
 }

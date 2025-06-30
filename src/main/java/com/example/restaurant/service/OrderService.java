@@ -1,5 +1,6 @@
 package com.example.restaurant.service;
 
+import com.example.restaurant.dto.MenuItemDto;
 import com.example.restaurant.dto.OrderRequestDto;
 import com.example.restaurant.dto.OrderResponseDto;
 import com.example.restaurant.entity.MenuItem;
@@ -30,20 +31,20 @@ public class OrderService {
             throw new IllegalArgumentException("No valid menu items found for the order.");
         }
 
-        // Calculate total price (consider quantity if available in requestDto, if not, assumed 1 per item)
+        // Calculate total price
         double total = items.stream()
                 .mapToDouble(MenuItem::getPrice)
                 .sum();
 
         // Calculate total chillies and check if all dishes are hot
         int totalChillies = items.stream()
-                .mapToInt(MenuItem::getChillies)
+                .mapToInt(item -> item.getSpiceLevel() != null ? item.getSpiceLevel().getChillies() : 0)
                 .sum();
 
         boolean allHot = items.stream()
-                .allMatch(item -> item.getChillies() > 0);
+                .allMatch(item -> item.getSpiceLevel() != null && item.getSpiceLevel().getChillies() >= 2);
 
-        boolean anyHot = totalChillies >= 5;
+        boolean anyHot = totalChillies >= 1;
 
         // Apply 10% discount if all dishes are hot
         double discount = 0.0;
@@ -65,15 +66,30 @@ public class OrderService {
         Order savedOrder = orderRepository.save(order);
 
         OrderResponseDto responseDto = orderMapper.toDto(savedOrder);
+
+        // Add discount, total chillies, hot flags
         responseDto.setDiscount(discount);
-        responseDto.setTotalChillies(totalChillies);
-        responseDto.setHot(anyHot);
+        responseDto.setChillies(totalChillies);
+        responseDto.setHotOrder(anyHot);
+        responseDto.setCustomerName(order.getCustomerName());
+
+        List<MenuItemDto> itemDtos = items.stream()
+                .map(item -> MenuItemDto.builder()
+                        .id(item.getId())
+                        .name(item.getName())
+                        .price(item.getPrice())
+                        .chillies(item.getSpiceLevel() != null ? item.getSpiceLevel().getChillies() : 0)
+                        .category(item.getCategory().name())
+                        .build())
+                .toList();
+
+        responseDto.setOrderedItems(itemDtos);
 
         // Set message depending on order content
         if (allHot && anyHot) {
-            responseDto.setMessage("🔥 All dishes are hot! You got a 10% discount.");
+            responseDto.setMessage("All dishes are hot! You got a 10% discount.");
         } else if (anyHot) {
-            responseDto.setMessage("🌶 Your order is hot with a total of " + totalChillies + " chillies.");
+            responseDto.setMessage("Your order is hot with a total of " + totalChillies + " chillies.");
         } else {
             responseDto.setMessage("Thank you for your order!");
         }

@@ -1,51 +1,52 @@
+
 .confirmation-container {
-  max-width: 480px;
-  margin: 50px auto;
-  padding: 30px 25px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
+  padding: 20px;
+  font-family: Arial, sans-serif;
   text-align: center;
+  max-width: 500px;
+  margin: auto;
 }
 
 .confirmation-container h2 {
-  margin-bottom: 20px;
-  color: #2c3e50;
-  font-weight: 700;
-}
-
-.confirmation-list {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 25px;
-  text-align: left;
-}
-
-.confirmation-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
-  font-size: 16px;
-}
-
-.discount-text {
-  color: #e74c3c; /* reddish for discount */
-  font-size: 17px;
   margin-bottom: 15px;
 }
 
-.total-text {
-  font-size: 22px;
-  font-weight: 700;
-  color: #27ae60; /* green for total */
-  margin-bottom: 25px;
+.hot-order-text {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.thank-you-message {
-  font-size: 18px;
-  font-weight: 500;
-  color: #34495e;
+.order-list {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.order-list li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 5px 0;
+}
+
+.discount-text {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.total-paid {
+  margin-bottom: 15px;
+}
+
+.order-again-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }

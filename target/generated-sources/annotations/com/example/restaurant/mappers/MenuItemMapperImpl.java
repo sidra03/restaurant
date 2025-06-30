@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-06-29T16:37:05+0200",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.15 (Homebrew)"
+    date = "2025-06-30T22:32:35+0200",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 23.0.2 (Homebrew)"
 )
 @Component
 public class MenuItemMapperImpl implements MenuItemMapper {
@@ -23,14 +23,34 @@ public class MenuItemMapperImpl implements MenuItemMapper {
 
         MenuItemDto.MenuItemDtoBuilder menuItemDto = MenuItemDto.builder();
 
+        menuItemDto.chillies( spiceLevelToChillies( entity.getSpiceLevel() ) );
+        menuItemDto.category( categoryToString( entity.getCategory() ) );
         menuItemDto.id( entity.getId() );
         menuItemDto.name( entity.getName() );
         menuItemDto.description( entity.getDescription() );
         menuItemDto.price( entity.getPrice() );
         menuItemDto.available( entity.isAvailable() );
-        menuItemDto.chillies( entity.getChillies() );
 
         return menuItemDto.build();
+    }
+
+    @Override
+    public MenuItem toEntity(MenuItemDto dto) {
+        if ( dto == null ) {
+            return null;
+        }
+
+        MenuItem.MenuItemBuilder menuItem = MenuItem.builder();
+
+        menuItem.spiceLevel( chilliesToSpiceLevel( dto.getChillies() ) );
+        menuItem.category( stringToCategory( dto.getCategory() ) );
+        menuItem.id( dto.getId() );
+        menuItem.name( dto.getName() );
+        menuItem.description( dto.getDescription() );
+        menuItem.price( dto.getPrice() );
+        menuItem.available( dto.isAvailable() );
+
+        return menuItem.build();
     }
 
     @Override

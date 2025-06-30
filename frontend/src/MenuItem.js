@@ -1,13 +1,16 @@
-import React from 'react';
+import React from "react";
 
 function MenuItem({ item, quantity, addToOrder, removeFromOrder }) {
+  // Fallback for spice level: use item.spiceLevel or item.chilliLevel
+  const spiceLevel = item.spiceLevel ?? item.chilliLevel ?? 0;
+
   return (
     <div className="card mb-3 shadow-sm">
       <div className="card-body">
         <h5 className="card-title">
-          {item.name}{' '}
-          {item.chilliLevel > 0 && (
-            <span className="badge bg-danger">{item.chilliLevel} 🌶️</span>
+          {item.name}{" "}
+          {spiceLevel > 0 && (
+            <span className="badge bg-danger">{spiceLevel} 🌶️</span>
           )}
         </h5>
         <p className="card-text">{item.description}</p>

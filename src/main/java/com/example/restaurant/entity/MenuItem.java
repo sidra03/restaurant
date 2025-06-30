@@ -1,5 +1,7 @@
 package com.example.restaurant.entity;
 
+import com.example.restaurant.enums.Category;
+import com.example.restaurant.enums.SpiceLevel;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
@@ -14,13 +16,12 @@ public class MenuItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String description;
     private double price;
     private boolean available;
+    private Category category;
 
-    // Number of chillies (0 means not hot, higher means hotter)
-    @JsonProperty("chilliLevel")
-    private int chillies;
+    @Enumerated(EnumType.STRING)
+    private SpiceLevel spiceLevel;
 }

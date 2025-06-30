@@ -4,6 +4,8 @@ import com.example.restaurant.dto.OrderRequestDto;
 import com.example.restaurant.dto.OrderResponseDto;
 import com.example.restaurant.entity.MenuItem;
 import com.example.restaurant.entity.Order;
+import com.example.restaurant.enums.Category;
+import com.example.restaurant.enums.SpiceLevel;
 import com.example.restaurant.mappers.OrderMapper;
 import com.example.restaurant.repository.MenuItemRepository;
 import com.example.restaurant.repository.OrderRepository;
@@ -37,9 +39,19 @@ class OrderServiceTest {
 
     @Test
     void testCreateOrder_AllHotItems_DiscountApplied() {
-        // Prepare mock menu items
-        MenuItem item1 = MenuItem.builder().id(1L).price(10.0).chillies(2).build();
-        MenuItem item2 = MenuItem.builder().id(2L).price(20.0).chillies(1).build();
+        // Prepare mock menu items with category set
+        MenuItem item1 = MenuItem.builder()
+                .id(1L)
+                .price(10.0)
+                .spiceLevel(SpiceLevel.HOT)
+                .category(Category.MAIN)
+                .build();
+        MenuItem item2 = MenuItem.builder()
+                .id(2L)
+                .price(20.0)
+                .spiceLevel(SpiceLevel.MILD)
+                .category(Category.SNACKS)
+                .build();
 
         List<MenuItem> items = List.of(item1, item2);
 
@@ -50,11 +62,11 @@ class OrderServiceTest {
         Order savedOrder = Order.builder()
                 .id(100L)
                 .items(items)
-                .total(27.0) // 10 + 20 = 30 with 10% discount = 27
+                .total(27.0)
                 .status("pending")
                 .hotOrder(true)
                 .chillies(3)
-                .customerName("John Doe")
+                .customerName("Sigve")
                 .build();
 
         when(orderRepository.save(any(Order.class))).thenReturn(savedOrder);
@@ -62,34 +74,32 @@ class OrderServiceTest {
         // Prepare the DTO returned by mapper
         OrderResponseDto responseDto = OrderResponseDto.builder()
                 .id(100L)
-                .customerName("John Doe")
+                .customerName("Sigve")
                 .total(27)
                 .status("pending")
-                .hot(true)
-                .totalChillies(3)
-                .discount(3) // 10% of 30 = 3
+                .hotOrder(true)
+                .chillies(3)
+                .discount(3)
                 .build();
 
         when(orderMapper.toDto(savedOrder)).thenReturn(responseDto);
 
         // Create request DTO
         OrderRequestDto requestDto = OrderRequestDto.builder()
-                .customerName("John Doe")
+                .customerName("Sigve")
                 .itemIds(List.of(1L, 2L))
                 .build();
 
-        // Call service method
         OrderResponseDto result = orderService.createOrder(requestDto);
 
         // Verify repository interaction
         verify(menuItemRepository, times(1)).findAllById(List.of(1L, 2L));
         verify(orderRepository, times(1)).save(any(Order.class));
 
-        // Assert results
-        assertEquals("John Doe", result.getCustomerName());
+        assertEquals("Sigve", result.getCustomerName());
         assertEquals(27, result.getTotal());
-        assertFalse(result.isHot());
-        assertEquals(3, result.getTotalChillies());
+        assertTrue(result.isHotOrder());
+        assertEquals(4, result.getChillies());
         assertEquals(0, result.getDiscount());
     }
 }

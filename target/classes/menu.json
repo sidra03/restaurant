@@ -1,30 +1,90 @@
 [
   {
+    "name": "Hot Paneer Tikka",
+    "description": "Grilled cottage cheese with spices.",
+    "price": 14.0,
+    "available": true,
+    "chilliLevel": 3,
+    "category": "snacks"
+  },
+  {
+    "name": "Spring Rolls",
+    "description": "Crispy vegetable spring rolls served with sweet chili sauce.",
+    "price": 8.0,
+    "available": true,
+    "chilliLevel": 1,
+    "category": "snacks"
+  },
+  {
+    "name": "Chicken Wings",
+    "description": "Spicy buffalo wings with a side of blue cheese dip.",
+    "price": 12.0,
+    "available": true,
+    "chilliLevel": 2,
+    "category": "snacks"
+  },
+  {
     "name": "Spicy Chicken Curry",
     "description": "Hot and flavorful chicken curry.",
     "price": 15.0,
     "available": true,
-    "chilliLevel": 5
+    "chilliLevel": 3,
+    "category": "main"
   },
   {
     "name": "Vegetable Biryani",
     "description": "Basmati rice with mixed vegetables.",
     "price": 12.0,
     "available": true,
-    "chilliLevel": 0
+    "chilliLevel": 0,
+    "category": "main"
   },
   {
     "name": "Nihari",
-    "description": "Meat cury with spices.",
+    "description": "Meat curry with spices.",
     "price": 20.0,
     "available": true,
-    "chilliLevel": 6
+    "chilliLevel": 3,
+    "category": "main"
   },
   {
-    "name": "Hot Paneer Tikka",
-    "description": "Grilled cottage cheese with spices.",
-    "price": 14.0,
+    "name": "Butter Chicken",
+    "description": "Creamy tomato-based chicken curry with butter.",
+    "price": 18.0,
     "available": true,
-    "chilliLevel": 3
+    "chilliLevel": 3,
+    "category": "main"
+  },
+  {
+    "name": "Lamb Rogan Josh",
+    "description": "Tender lamb cooked in aromatic spices.",
+    "price": 22.0,
+    "available": true,
+    "chilliLevel": 1,
+    "category": "main"
+  },
+  {
+    "name": "Gulab Jamun",
+    "description": "Soft fried dough balls soaked in rose syrup.",
+    "price": 6.0,
+    "available": true,
+    "chilliLevel": 0,
+    "category": "dessert"
+  },
+  {
+    "name": "Kulfi",
+    "description": "Traditional Indian ice cream flavored with cardamom and pistachios.",
+    "price": 7.0,
+    "available": true,
+    "chilliLevel": 0,
+    "category": "dessert"
+  },
+  {
+    "name": "Mango Lassi",
+    "description": "Sweet mango yogurt drink.",
+    "price": 5.0,
+    "available": true,
+    "chilliLevel": 0,
+    "category": "dessert"
   }
 ]
