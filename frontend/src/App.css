@@ -1,10 +1,13 @@
 .app-container {
+  max-width: 960px;
+  margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
 }
 
 h1 {
   margin-bottom: 30px;
+  font-size: clamp(1.5rem, 2vw, 2.5rem);
 }
 
 .category-section {
@@ -56,6 +59,7 @@ h1 {
   padding: 5px 10px;
   margin: 0 5px;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .menu-item-controls button:disabled {
@@ -76,4 +80,28 @@ h1 {
 .place-order-btn:disabled {
   cursor: not-allowed;
   background-color: #94d3a2;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .menu-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-item-info {
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .menu-item-controls {
+    min-width: auto;
+    width: 100%;
+    text-align: left;
+  }
+
+  .menu-item-controls button {
+    margin: 5px 0;
+    width: 100%;
+  }
 }

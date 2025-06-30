@@ -87,12 +87,15 @@ public class OrderService {
 
         // Set message depending on order content
         if (allHot && anyHot) {
-            responseDto.setMessage("All dishes are hot! You got a 10% discount.");
-        } else if (anyHot) {
-            responseDto.setMessage("Your order is hot with a total of " + totalChillies + " chillies.");
+            responseDto.setMessage("🌶️ All dishes are hot! You got a 10% discount.");
+        } else if (totalChillies >= 3) {
+            responseDto.setMessage("🌶️ This is a HOT order! 🌶️");
+        } else if (totalChillies >= 1) {
+            responseDto.setMessage("This order is medium spicy.");
         } else {
-            responseDto.setMessage("Thank you for your order!");
+            responseDto.setMessage("This order is mild.");
         }
+
 
         return responseDto;
     }

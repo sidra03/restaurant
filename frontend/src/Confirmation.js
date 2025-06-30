@@ -1,19 +1,15 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./Confirmation.css";
 
-function Confirmation({ order, total, discount, totalChillies, isHotOrder, onReset }) {
-  let spiceMessage = "This order is mild.";
-  if (totalChillies >= 3) {
-    spiceMessage = "🌶️ This is a HOT order! 🌶️";
-  } else if (totalChillies >= 1) {
-    spiceMessage = "This order is medium spicy.";
-  }
+function Confirmation({ order, total, discount, message, onReset }) {
+  const displaySpiceMessage = message;
 
   return (
     <div className="confirmation-container">
       <h2>Thank you for your order!</h2>
 
-      <p>{spiceMessage}</p>
+      <p>{displaySpiceMessage}</p>
 
       <ul className="order-list">
         {order.map((item) => (
@@ -41,5 +37,19 @@ function Confirmation({ order, total, discount, totalChillies, isHotOrder, onRes
     </div>
   );
 }
+
+Confirmation.propTypes = {
+  order: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+  total: PropTypes.number.isRequired,
+  discount: PropTypes.number.isRequired,
+  message: PropTypes.string,
+  onReset: PropTypes.func.isRequired,
+};
 
 export default Confirmation;
